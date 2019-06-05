@@ -1,10 +1,10 @@
-.dashboard {
+.stores {
     background-color: #DADADA;
     height: 100%;
 }
-.dashboard .cards {
+.stores .cards {
     margin-left: 1.5em;
 }
-.dashboard .header {
+.stores .header {
     margin-left: 1.5em;
 }
