@@ -1,0 +1,22 @@
+.masthead {
+    background-image: url('../../../assets/images/open.jpg') !important;
+    background-repeat: no-repeat !important;
+    background-size: 100% 100% !important;
+}
+
+  .masthead.segment {
+    min-height: 700px;
+    padding: 1em 0em;
+  }
+  .masthead .ui.menu .ui.button {
+    margin-left: 0.5em;
+  }
+
+
+  @media only screen and (max-width: 700px) {
+    .masthead.segment {
+      min-height: 350px;
+    }
+  }
+
+
