@@ -19,6 +19,8 @@
     "@angular/platform-browser": "~8.0.0",
     "@angular/platform-browser-dynamic": "~8.0.0",
     "@angular/router": "~8.0.0",
+    "@types/jwt-decode": "^2.2.1",
+    "jwt-decode": "^2.2.0",
     "ng2-semantic-ui": "^0.9.7",
     "ngx-toastr": "^10.0.4",
     "querystringify": ">=2.0.0",
