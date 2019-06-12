@@ -3,6 +3,7 @@ import { FormBuilder, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { ILoginPayload } from '../../common/interfaces/user';
 import { LoginService } from 'src/app/services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -27,7 +28,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private loginService: LoginService) { }
+    private loginService: LoginService,
+    private _router: Router,) { }
 
   onSubmit() {
     const userData = <ILoginPayload> {
@@ -35,8 +37,12 @@ export class LoginComponent implements OnInit {
       password: this.loginForm.get('password').value
     };
     this.loginService.loginUser(userData)
-    .subscribe(res => {console.log(res)});
-  }
+    .subscribe(res => {
+      if (!!res) {
+        this._router.navigate(['dashboard']);
+      }
+    });
+    }
 
   ngOnInit() {
   }
