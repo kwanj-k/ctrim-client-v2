@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
     };
     this.loginService.loginUser(userData)
     .subscribe(res => {
-      if (!!res) {
+      if (res) {
         this._router.navigate(['dashboard']);
       }
     });
