@@ -5,6 +5,7 @@ import { Observable, of } from 'rxjs';
 import { map, catchError, tap, timeout } from 'rxjs/operators';
 import { SettingsService } from '../common/services/settings.service';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from './auth/auth.service';
 
 interface ILoginResponse {
   email: string;
@@ -23,12 +24,14 @@ export class LoginService {
   constructor(
     private http: HttpClient,
     private settings: SettingsService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private authService: AuthService
     ) {}
   loginUser (userData: ILoginPayload): Observable<{}> {
     return this.http.post<ILoginResponse>(this.loginUrl, userData, httpOptions).pipe(
       map(data => {
         localStorage.setItem('token', data.token);
+        this.authService.isLoggedIn = true
         return data.token;
       }),
       catchError(this.handleError<{}>('login'))
