@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private loginService: LoginService,
-    private _router: Router,) { }
+    private _router: Router) { }
 
   onSubmit() {
     const userData = <ILoginPayload> {

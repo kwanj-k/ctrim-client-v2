@@ -9,27 +9,28 @@
               Create your account
             </div>
           </h2>
-          <form class="ui large form">
+          <form class="ui large form" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
             <div class="ui stacked segment">
               <div class="field">
                   <div class="ui left icon input">
                     <i class="user icon"></i>
-                    <input type="text" name="username" placeholder="Username">
+                    <input type="text" formControlName="username" placeholder="Username">
                   </div>
                 </div>
               <div class="field">
                 <div class="ui left icon input">
                   <i class="user icon"></i>
-                  <input type="text" name="email" placeholder="E-mail address">
+                  <input type="text" formControlName="email" placeholder="E-mail address">
                 </div>
               </div>
               <div class="field">
                 <div class="ui left icon input">
                   <i class="lock icon"></i>
-                  <input type="password" name="password" placeholder="Password">
+                  <input type="password" formControlName="password" placeholder="Password">
                 </div>
               </div>
-              <div class="ui fluid large teal submit button">Signup</div>
+              <button type="submit" class="ui fluid large teal submit button" [disabled]="!signupForm.valid">Signup</button>
+              <app-loader></app-loader>
             </div>
       
             <div class="ui error message"></div>
