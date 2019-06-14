@@ -35,7 +35,7 @@ export class SignupService {
         this.authService.isLoggedIn = true
         return data.token;
       }),
-      catchError(this.handleError<{}>('signup'))
+      catchError(this.handleError<{}>(''))
     )
   }
   /** 
@@ -46,18 +46,20 @@ export class SignupService {
   */
    private handleError<T> (operation = 'operation', result?: T) {
      return (HttpErrorResponse: any): Observable<T> => {
-       console.log(HttpErrorResponse)
        if (HttpErrorResponse.status === 400) {
-         this.log(`${operation} failed: Working on the error handling`);
+        const errors = HttpErrorResponse.error
+        for(const key in errors) {
+          this.log(`${operation} ${errors[key][0]}`);
+        }
        } else{
-         this.log(`${operation} failed: Something went wrong`);
+         this.log(`${operation} Something went wrong`);
        }
        return of(result as T);
      };
    }
    private log(message: string) {
-     this.toastr.error(message, 'Authenitication failure', {
-       timeOut: 7000
+     this.toastr.error(message, 'Registration failure', {
+       timeOut: 1700000
      });
    }
 
