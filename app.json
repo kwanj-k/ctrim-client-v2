@@ -1,0 +1,19 @@
+{
+  "addons": [
+
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ],
+  "description": "Enable review apps",
+  "env": {
+  },
+  "formation": {
+  },
+  "name": "ctrim-client-v2",
+  "scripts": {
+  },
+  "stack": "heroku-18"
+}
