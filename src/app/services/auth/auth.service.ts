@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
-
-import { Observable, of } from 'rxjs';
 import { TokenService } from './token.service';
-import { tap } from 'rxjs/operators';
 
 
 @Injectable({
@@ -20,5 +17,7 @@ export class AuthService {
 
   logout(): void {
     this.isLoggedIn = false;
+    localStorage.removeItem('token');
+    return
   }
 }

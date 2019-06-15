@@ -7,11 +7,16 @@ const token = localStorage.getItem('token')
 })
 export class TokenService {
   isExpired () {
-    const { exp } = jwt_decode(token);
-    if (!!exp) {
-      const now = new Date();
-      const nowInSec = Math.floor(now.getTime() * 0.001); // Convert date to sec
-      return nowInSec > exp;
+    if (token) {
+      const { exp } = jwt_decode(token);
+      if (exp) {
+        const now = new Date();
+        const nowInSec = Math.floor(now.getTime() * 0.001); // Convert date to sec
+        return nowInSec < exp;
+      }
+    }else {
+      return false
     }
+    
   }
 }

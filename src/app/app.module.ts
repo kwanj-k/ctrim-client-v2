@@ -19,6 +19,7 @@ import { StoresComponent } from './components/stores/stores.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { LoaderService } from './services/loader.service';
 import { LoaderInterceptor } from './interceptors/loader.interceptor';
+import { MenuComponent } from './components/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { LoaderInterceptor } from './interceptors/loader.interceptor';
     SignupComponent,
     DashboardComponent,
     StoresComponent,
-    LoaderComponent
+    LoaderComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
