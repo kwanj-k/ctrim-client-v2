@@ -12,6 +12,7 @@ export class AuthService {
 
   checkToken(): boolean {
     const check = this.tokenService.isExpired()
+    console.log(check)
     return check
   }
 
