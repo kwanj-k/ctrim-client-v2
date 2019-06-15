@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
-
-import { Observable, of } from 'rxjs';
 import { TokenService } from './token.service';
-import { tap } from 'rxjs/operators';
 
 
 @Injectable({
@@ -15,6 +12,7 @@ export class AuthService {
 
   checkToken(): boolean {
     const check = this.tokenService.isExpired()
+    console.log(check)
     return check
   }
 
