@@ -2,7 +2,7 @@
   <a routerLink="/home" class="item">
     Home
   </a>
-  <a class="active item">
+  <a class="item" routerLink="/dashboard">
     Dashboard
   </a>
   <a routerLink="/stores" class="item">
@@ -18,7 +18,7 @@
         <i class="search link icon"></i>
       </div>
     </div>
-    <a class="ui item">
+    <a (click)="logOut()" class="ui item">
       Logout
     </a>
   </div>
