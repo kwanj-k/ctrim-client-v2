@@ -10,16 +10,15 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { LoginComponent } from './components/login/login.component';
-import { SignupComponent } from './components/signup/signup.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { StoresComponent } from './components/stores/stores.component';
-import { LoaderComponent } from './components/loader/loader.component';
-import { LoaderService } from './services/loader.service';
+import { HomeComponent } from './home/home.component';
+import { FooterComponent } from './footer/footer.component';
+import { LoginComponent } from './auth/components/login/login.component';
+import { SignupComponent } from './auth/components/signup/signup.component';
+import { StoresComponent } from './stores/stores.component';
+import { LoaderComponent } from './http-loader/component/loader.component';
+import { LoaderService } from './http-loader/services/loader.service';
 import { LoaderInterceptor } from './interceptors/loader.interceptor';
-import { MenuComponent } from './components/menu/menu.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +27,6 @@ import { MenuComponent } from './components/menu/menu.component';
     FooterComponent,
     LoginComponent,
     SignupComponent,
-    DashboardComponent,
     StoresComponent,
     LoaderComponent,
     MenuComponent
