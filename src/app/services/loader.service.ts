@@ -12,5 +12,4 @@ export class LoaderService {
   hide() {
       this.isLoading.next(false);
   }
-  constructor() { }
 }
