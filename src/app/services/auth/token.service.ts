@@ -19,4 +19,14 @@ export class TokenService {
     }
     
   }
+
+  getToken (): string {
+    const check = this.isExpired()
+    if (check) {
+      const token = localStorage.getItem('token')
+      return token
+    } else {
+      return ''
+    }
+  }
 }

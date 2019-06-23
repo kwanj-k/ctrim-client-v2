@@ -1,43 +1,22 @@
 <div class="stores">
     <div class="ui text container">
           <app-menu></app-menu>
+          <div *ngIf="isLoading"  class="ui segment">
+              <p></p>
+              <div class="ui active dimmer">
+                <div class="ui loader"></div>
+              </div>
+          </div>
           <div class="ui cards">
-              <div class="card">
+              <div class="card" *ngFor="let store of stores">
                 <div class="content">
-                  <div class="header">Elliot Fu</div>
-                  <div class="meta">Friend</div>
+                  <div class="header">{{ store.name }}</div>
+                  <div class="meta">{{ store.owner }}</div>
                   <div class="description">
-                    Elliot Fu is a film-maker from New York.
+                    A small description about the store
                   </div>
                 </div>
               </div>
-              <div class="card">
-                <div class="content">
-                  <div class="header">Veronika Ossi</div>
-                  <div class="meta">Friend</div>
-                  <div class="description">
-                    Veronika Ossi is a set designer living in New York who enjoys kittens, music, and partying.
-                  </div>
-                </div>
-              </div>
-              <div class="card">
-                <div class="content">
-                  <div class="header">Jenny Hess</div>
-                  <div class="meta">Friend</div>
-                  <div class="description">
-                    Jenny is a student studying Media Management at the New School
-                  </div>
-                </div>
-              </div>
-              <div class="card">
-                  <div class="content">
-                    <div class="header">Jenny Hess</div>
-                    <div class="meta">Friend</div>
-                    <div class="description">
-                      Jenny is a student studying Media Management at the New School
-                    </div>
-                  </div>
-                </div>
-            </div>
-      </div>
-  </div>
+          </div>
+    </div>
+</div>
