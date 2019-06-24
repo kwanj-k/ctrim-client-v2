@@ -3,3 +3,8 @@ export interface IStore {
     owner: string;
     pk: number;
   }
+
+export interface IAddStore {
+  name: string;
+  description: string;
+}

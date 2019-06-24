@@ -5,6 +5,10 @@
 .stores .cards {
     margin-left: 1.5em;
 }
+.no-store {
+	margin-left: 2%;
+	margin-top: 5%;
+}
 .label-container{
 	position:fixed;
 	bottom:48px;
@@ -40,4 +44,11 @@ button.float + .label-container {
 button.float:hover + .label-container{
   visibility: visible;
   opacity: 1;
+}
+
+.modal{
+	top: 28% !important;
+}
+.modal .header{
+	text-align: center;
 }
