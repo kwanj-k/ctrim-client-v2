@@ -1,6 +1,12 @@
 <div class="stores">
     <div class="ui text container">
           <app-menu></app-menu>
+          <button class="float circular ui icon teal button">
+            <i class="my-float icon plus big"></i>
+          </button>
+          <div class="label-container">
+            <div class="ui grey right pointing label big">Add Store</div>
+          </div>
           <div *ngIf="isLoading"  class="ui segment">
               <p></p>
               <div class="ui active dimmer">

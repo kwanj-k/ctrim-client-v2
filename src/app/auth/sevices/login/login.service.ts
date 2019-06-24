@@ -52,7 +52,7 @@ export class LoginService {
   }
   private log(message: string) {
     this.toastr.error(message, 'Login failure', {
-      timeOut: 5000
+      timeOut: 7000
     });
   }
 }
