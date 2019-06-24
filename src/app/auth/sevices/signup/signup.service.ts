@@ -31,30 +31,21 @@ export class SignupService {
         this.authService.isLoggedIn = true
         return data.token;
       }),
-      catchError(this.handleError<{}>(''))
+      catchError(this.handleError())
     )
   }
-  /** 
-  Handle Http operation that failed.
-  * Let the app continue.
-  * @param operation - name of the operation that failed
-  * @param result - optional value to return as the observable result
-  */
-   private handleError<T> (operation = 'operation', result?: T) {
-     return (HttpErrorResponse: any): Observable<T> => {
-       if (HttpErrorResponse.status === 400) {
-        const errors = HttpErrorResponse.error
-        for(const key in errors) {
-          this.log(`${operation} ${errors[key][0]}`);
-        }
-       } else{
-         this.log(`${operation} Something went wrong`);
-       }
-       return of(result as T);
-     };
-   }
+  private handleError() {
+    return (error: any)  => {
+
+      // TODO: send the error to the redux store so to log in the form
+      Object.keys(error.error).forEach(key => {
+        this.log(`${key}: ${error.error[key]}`);
+      })
+      return error
+    };
+  }
    private log(message: string) {
-     this.toastr.error(message, 'Registration failure', {
+     this.toastr.error(message, 'Signup failure', {
        timeOut: 1700000
      });
    }

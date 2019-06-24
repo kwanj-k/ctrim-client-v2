@@ -31,27 +31,27 @@ export class LoginService {
         this.authService.isLoggedIn = true
         return data.token;
       }),
-      catchError(this.handleError<{}>('login'))
+      catchError(this.handleError())
     )
   }
   /**
- * Handle Http operation that failed.
- * Let the app continue.
- * @param operation - name of the operation that failed
- * @param result - optional value to return as the observable result
- */
-  private handleError<T> (operation = 'operation', result?: T) {
-    return (HttpErrorResponse: any): Observable<T> => {
-      if (HttpErrorResponse.status === 400) {
-        this.log(`${operation} failed: Wrong email or password`);
-      } else{
-        this.log(`${operation} failed: Something went wrong`);
-      }
+   * Handle Http operation that failed.
+   * Let the app continue.
+   * @param result - optional value to return as the observable result
+   */
+  private handleError<T> (result?: T) {
+    return (error: any): Observable<T> => {
+      // TODO: send the error to remote logging infrastructure
+
+      // TODO: better job of transforming error for user consumption
+      this.log(`${error.error.non_field_errors[0]}`);
+
+      // Let the app keep running by returning an empty result.
       return of(result as T);
     };
   }
   private log(message: string) {
-    this.toastr.error(message, 'Authenitication failure', {
+    this.toastr.error(message, 'Login failure', {
       timeOut: 7000
     });
   }
