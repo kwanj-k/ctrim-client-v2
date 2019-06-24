@@ -46,7 +46,7 @@ export class SignupService {
   }
    private log(message: string) {
      this.toastr.error(message, 'Signup failure', {
-       timeOut: 1700000
+       timeOut: 5000
      });
    }
 
