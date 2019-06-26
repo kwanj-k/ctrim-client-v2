@@ -31,22 +31,22 @@ export class SignupService {
         this.authService.isLoggedIn = true
         return data.token;
       }),
-      catchError(this.handleError())
+      catchError(this.handleError<ISignupResponse>())
     )
   }
-  private handleError() {
-    return (error: any)  => {
+  private handleError<T>(result?: T){
+    return (error: any): Observable<T> => {
 
       // TODO: send the error to the redux store so to log in the form
       Object.keys(error.error).forEach(key => {
         this.log(`${key}: ${error.error[key]}`);
       })
-      return error
+      return of(result as T); 
     };
   }
    private log(message: string) {
      this.toastr.error(message, 'Signup failure', {
-       timeOut: 1700000
+       timeOut: 7000
      });
    }
 

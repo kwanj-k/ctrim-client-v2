@@ -1,6 +1,41 @@
 <div class="stores">
     <div class="ui text container">
           <app-menu></app-menu>
+          <p *ngIf='storesExists' class="no-store">You do not have any stores at the moment. Click the plus on the bottom right to add a store.</p>
+          <button (click)='onOpen()' class="float circular ui icon teal button">
+            <i class="my-float icon plus big"></i>
+          </button>
+          <div class="label-container">
+            <div class="ui grey right pointing label big">Add Store</div>
+          </div>
+          <div *ngIf='showModal' class='ui dimmer modals page transition visible active'>
+            <div class="ui tiny modal visible active">
+                <i class="close icon" (click)='onClose()'></i>
+                <div class="header">
+                  Add Store
+                </div>
+                <form class="ui large form" [formGroup]="addStoreForm" >
+                    <div class="ui  segment">
+                      <div class="field">
+                        <input formControlName="name" type="text"  placeholder="Store name">
+                      </div>
+                      <div class="field">
+                          <label>Short Description</label>
+                          <textarea formControlName="description" rows="2" placeholder="Type of store and location"></textarea>
+                      </div>
+                    </div>
+                </form>
+                <div class="actions">
+                  <button (click)='onClose()' class="ui black deny button">
+                    Cancel
+                  </button>
+                  <button (click)="onSubmit()" class="ui positive right labeled icon button" [disabled]="!addStoreForm.valid">
+                    Add
+                    <i class="checkmark icon"></i>
+                  </button>
+                </div>
+              </div>
+          </div>
           <div *ngIf="isLoading"  class="ui segment">
               <p></p>
               <div class="ui active dimmer">
@@ -11,9 +46,9 @@
               <div class="card" *ngFor="let store of stores">
                 <div class="content">
                   <div class="header">{{ store.name }}</div>
-                  <div class="meta">{{ store.owner }}</div>
+                  <div class="meta">By: {{ store.owner }}</div>
                   <div class="description">
-                    A small description about the store
+                    {{ store.description }}
                   </div>
                 </div>
               </div>
