@@ -17,9 +17,9 @@
                 <form class="ui large form" [formGroup]="addStoreForm" >
                     <div class="ui  segment">
                       <div class="field">
-                        <div [hidden]="addStoreForm.valid || addStoreForm.untouched">{{ error }}</div>
                         <input formControlName="name" type="text"  placeholder="Store name"
                          [class.field-error]="!addStoreForm.valid && submitted">
+                         <div style="color: red" [hidden]="addStoreForm.valid || addStoreForm.untouched">{{ error }}</div>
                       </div>
                       <div class="field">
                           <label>Short Description</label>
