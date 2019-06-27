@@ -14,11 +14,15 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './auth/components/login/login.component';
 import { SignupComponent } from './auth/components/signup/signup.component';
-import { StoresComponent } from './stores/stores.component';
+import { StoresComponent } from './stores/components/stores/stores.component';
 import { LoaderComponent } from './http-loader/component/loader.component';
 import { LoaderService } from './http-loader/services/loader.service';
 import { LoaderInterceptor } from './interceptors/loader.interceptor';
 import { MenuComponent } from './menu/menu.component';
+import { StoreDetailComponent } from './stores/components/store-detail/store-detail.component';
+import { LineChartComponent } from './animations/components/line-chart/line-chart.component';
+import { ChartsModule } from 'ng2-charts';
+import { PercentageCardsComponent } from './stores/components/percentage-cards/percentage-cards.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +33,10 @@ import { MenuComponent } from './menu/menu.component';
     SignupComponent,
     StoresComponent,
     LoaderComponent,
-    MenuComponent
+    MenuComponent,
+    StoreDetailComponent,
+    LineChartComponent,
+    PercentageCardsComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +46,8 @@ import { MenuComponent } from './menu/menu.component';
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    ChartsModule
   ],
   providers: [
     LoaderService,

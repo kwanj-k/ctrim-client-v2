@@ -16,7 +16,7 @@ interface ILoginResponse {
   providedIn: 'root'
 })
 export class LoginService {
-  loginUrl = this.settings.baseUrl + 'login/'
+  loginUrl = this.settings.baseUrl + 'login/';
   constructor(
     private http: HttpClient,
     private settings: SettingsService,
@@ -24,22 +24,22 @@ export class LoginService {
     private authService: AuthService
     ) {}
 
-  loginUser (userData: ILoginPayload): Observable<{}> {
+  loginUser(userData: ILoginPayload): Observable<{}> {
     return this.http.post<ILoginResponse>(this.loginUrl, userData, this.settings.httpOptions).pipe(
       map(data => {
         localStorage.setItem('token', data.token);
-        this.authService.isLoggedIn = true
+        this.authService.isLoggedIn = true;
         return data.token;
       }),
       catchError(this.handleError())
-    )
+    );
   }
   /**
    * Handle Http operation that failed.
    * Let the app continue.
    * @param result - optional value to return as the observable result
    */
-  private handleError<T> (result?: T) {
+  private handleError<T>(result?: T) {
     return (error: any): Observable<T> => {
       // TODO: send the error to remote logging infrastructure
 

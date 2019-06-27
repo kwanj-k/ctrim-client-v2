@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 
 import { StoresService } from 'src/app/stores/services/stores.service';
-import { IStore, IAddStore } from './interfaces';
-import { Router } from '@angular/router';
+import { IStore, IAddStore } from '../../interfaces';
 
 @Component({
   selector: 'app-stores',
@@ -12,9 +11,9 @@ import { Router } from '@angular/router';
 })
 export class StoresComponent implements OnInit {
   stores: IStore[];
-  isLoading: boolean = true;
-  storesExists: boolean = false;
-  submitted: boolean = false;
+  isLoading = true;
+  storesExists = false;
+  submitted = false;
   error: string;
   addStoreForm = this.fb.group({
     name: new FormControl('',
@@ -27,15 +26,13 @@ export class StoresComponent implements OnInit {
         Validators.required
       ]
     ),
-  })
+  });
   constructor(
     private storesService: StoresService,
-    private fb: FormBuilder,
-    private _router: Router
-  ) { }
-  showModal: boolean = false;
+    private fb: FormBuilder  ) { }
+  showModal = false;
   ngOnInit() {
-    this.getStores()
+    this.getStores();
   }
   onClose(): void {
     this.showModal = false;
@@ -48,34 +45,34 @@ export class StoresComponent implements OnInit {
     this.storesService.getStores().subscribe(
       stores => {
         this.isLoading = false;
-        if (stores.length < 1){
-          this.storesExists = true
+        if (stores.length < 1) {
+          this.storesExists = true;
         }
-        this.stores = stores
+        this.stores = stores;
       }
-      
-    )
+
+    );
   }
 
   onSubmit() {
     this.submitted = true;
-    const storeData = <IAddStore> {
+    const storeData = {
       name: this.addStoreForm.get('name').value,
       description: this.addStoreForm.get('description').value
-    }
+    } as IAddStore;
     this.storesService.addStore(storeData)
       .subscribe(res => {
         if (res) {
           this.showModal = false;
-          this.getStores()
+          this.getStores();
         }
       },
       error => {
-        this.error = error.error
+        this.error = error.error;
         this.invalidate();
-      })
+      });
   }
   private invalidate() {
-    this.addStoreForm.get('name').setErrors({ 'incorrect': true });
+    this.addStoreForm.get('name').setErrors({ incorrect: true });
   }
 }

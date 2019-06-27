@@ -7,12 +7,12 @@ import { HttpHeaders } from '@angular/common/http';
 })
 export class SettingsService {
   get baseUrl(): string {
-    return this._baseUrl
+    return this._baseUrl;
   }
   set baseUrl(value: string) {
-    this._baseUrl = value
+    this._baseUrl = value;
   }
-  private _baseUrl = environment.apiUrl
+  private _baseUrl = environment.apiUrl;
   public httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };

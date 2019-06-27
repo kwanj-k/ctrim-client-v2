@@ -24,7 +24,7 @@ export class LoginComponent {
         Validators.required
       ]
     ),
-  })
+  });
 
   constructor(
     private fb: FormBuilder,
@@ -32,10 +32,10 @@ export class LoginComponent {
     private _router: Router) { }
 
   onSubmit() {
-    const userData = <ILoginPayload> {
+    const userData = {
       email: this.loginForm.get('email').value,
       password: this.loginForm.get('password').value
-    };
+    } as ILoginPayload;
     this.loginService.loginUser(userData)
     .subscribe(res => {
       if (res) {

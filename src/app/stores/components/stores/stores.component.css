@@ -2,6 +2,9 @@
 	border: 1px solid red !important;
 	margin-top: 4px;
 }
+.col a:hover {
+	background-color: rgb(80, 177, 172);
+  }
 .stores {
     background-color: #DADADA;
     height: 100%;

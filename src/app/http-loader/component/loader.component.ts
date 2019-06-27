@@ -9,6 +9,6 @@ import { LoaderService } from 'src/app/http-loader/services/loader.service';
 })
 export class LoaderComponent {
   isLoading: Subject<boolean> = this.loaderService.isLoading;
-  constructor(private loaderService: LoaderService){}
+  constructor(private loaderService: LoaderService) {}
 
 }
