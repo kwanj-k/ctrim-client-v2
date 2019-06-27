@@ -14,20 +14,26 @@
               <div class="field">
                   <div class="ui left icon input">
                     <i class="user icon"></i>
-                    <input type="text" formControlName="username" placeholder="Username">
+                    <input [class.field-error]="errors?.username && submitted"
+                    type="text" formControlName="username" placeholder="Username">
                   </div>
+                <div style="color: red" [hidden]="signupForm.valid">{{ errors?.username[0] }}</div>
                 </div>
               <div class="field">
                 <div class="ui left icon input">
                   <i class="user icon"></i>
-                  <input type="text" formControlName="email" placeholder="E-mail address">
+                  <input type="text" [class.field-error]="errors?.email && submitted"
+                    formControlName="email" placeholder="E-mail address">
                 </div>
+                <div style="color: red" [hidden]="signupForm.valid">{{ errors?.email[0] }}</div>
               </div>
               <div class="field">
                 <div class="ui left icon input">
                   <i class="lock icon"></i>
-                  <input type="password" formControlName="password" placeholder="Password">
+                  <input type="password"[class.field-error]="errors?.password && submitted" 
+                    formControlName="password" placeholder="Password">
                 </div>
+                <div style="color: red" [hidden]="signupForm.valid">{{ errors?.password[0] }}</div>
               </div>
               <button type="submit" class="ui fluid large teal submit button" [disabled]="!signupForm.valid">Signup</button>
               <app-loader></app-loader>

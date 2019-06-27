@@ -14,6 +14,8 @@ export class StoresComponent implements OnInit {
   stores: IStore[];
   isLoading: boolean = true;
   storesExists: boolean = false;
+  submitted: boolean = false;
+  error: string;
   addStoreForm = this.fb.group({
     name: new FormControl('',
       [
@@ -56,6 +58,7 @@ export class StoresComponent implements OnInit {
   }
 
   onSubmit() {
+    this.submitted = true;
     const storeData = <IAddStore> {
       name: this.addStoreForm.get('name').value,
       description: this.addStoreForm.get('description').value
@@ -66,7 +69,13 @@ export class StoresComponent implements OnInit {
           this.showModal = false;
           this.getStores()
         }
+      },
+      error => {
+        this.error = error.error
+        this.invalidate();
       })
   }
-
+  private invalidate() {
+    this.addStoreForm.get('name').setErrors({ 'incorrect': true });
+  }
 }
