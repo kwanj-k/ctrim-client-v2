@@ -1,3 +1,7 @@
+.field .field-error {
+	border: 1px solid red !important;
+	margin-top: 4px;
+}
 .stores {
     background-color: #DADADA;
     height: 100%;

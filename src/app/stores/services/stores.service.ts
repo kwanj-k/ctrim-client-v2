@@ -11,15 +11,15 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class StoresService {
-  storesUrl = this.settings.baseUrl + 'stores/'
-  token = this.tokenService.getToken()
+  storesUrl = this.settings.baseUrl + 'stores/';
+  token = this.tokenService.getToken();
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + this.token
     })
   };
-  constructor (
+  constructor(
     private http: HttpClient,
     private settings: SettingsService,
     private tokenService: TokenService
@@ -32,7 +32,7 @@ export class StoresService {
       this.storesUrl, storeData, this.httpOptions
     ).pipe(
       map(data => {
-        return data
+        return data;
       })
     )
   }
