@@ -2,9 +2,8 @@ import { Injectable } from '@angular/core';
 import { SettingsService } from '../../../shared/services/settings.service';
 import { HttpClient } from '@angular/common/http';
 import { ISignupPayload, ISignupResponse } from '../../interfaces';
-import { Observable, of } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
-import { ToastrService } from 'ngx-toastr';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { AuthService } from '../auth.service';
 
 
@@ -19,7 +18,6 @@ export class SignupService {
     private settings: SettingsService,
     private http: HttpClient,
     private authService: AuthService,
-    private toastr: ToastrService,
   ) { }
 
   signupUser (userData: ISignupPayload): Observable<{}> {
@@ -29,25 +27,8 @@ export class SignupService {
       map(data => {
         localStorage.setItem('token', data.token);
         this.authService.isLoggedIn = true
-        return data.token;
-      }),
-      catchError(this.handleError<ISignupResponse>())
+        return data;
+      })
     )
   }
-  private handleError<T>(result?: T){
-    return (error: any): Observable<T> => {
-
-      // TODO: send the error to the redux store so to log in the form
-      Object.keys(error.error).forEach(key => {
-        this.log(`${key}: ${error.error[key]}`);
-      })
-      return of(result as T); 
-    };
-  }
-   private log(message: string) {
-     this.toastr.error(message, 'Signup failure', {
-       timeOut: 7000
-     });
-   }
-
 }

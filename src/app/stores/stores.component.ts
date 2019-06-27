@@ -72,8 +72,10 @@ export class StoresComponent implements OnInit {
       },
       error => {
         this.error = error.error
-        this.addStoreForm.get('name').setErrors({'incorrect': true});
+        this.invalidate();
       })
   }
-
+  private invalidate() {
+    this.addStoreForm.get('name').setErrors({ 'incorrect': true });
+  }
 }
