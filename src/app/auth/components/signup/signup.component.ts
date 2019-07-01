@@ -11,7 +11,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent {
-  errors: { property: Array<string>; };
+  errors: { username: [],
+            email: [],
+            password: [] };
   submitted = false;
   signupForm = this.fb.group({
     email: new FormControl('',
