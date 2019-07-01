@@ -14,26 +14,26 @@
               <div class="field">
                   <div class="ui left icon input">
                     <i class="user icon"></i>
-                    <input [class.field-error]="errors?.username && submitted"
+                    <input [class.field-error]="submitted"
                     type="text" formControlName="username" placeholder="Username">
                   </div>
-                <div style="color: red" [hidden]="signupForm.valid">{{ errors?.username[0] }}</div>
+                <div style="color: red" [hidden]="signupForm.valid" *ngIf='errors.username'>{{ errors.username[0] }}</div>
                 </div>
               <div class="field">
                 <div class="ui left icon input">
                   <i class="user icon"></i>
-                  <input type="text" [class.field-error]="errors?.email && submitted"
+                  <input type="text" [class.field-error]=" submitted"
                     formControlName="email" placeholder="E-mail address">
                 </div>
-                <div style="color: red" [hidden]="signupForm.valid">{{ errors?.email[0] }}</div>
+                <div *ngIf='errors.email' style="color: red" [hidden]="signupForm.valid">{{ errors.email[0] }}</div>
               </div>
               <div class="field">
                 <div class="ui left icon input">
                   <i class="lock icon"></i>
-                  <input type="password"[class.field-error]="errors?.password && submitted" 
+                  <input type="password" [class.field-error]=" submitted" 
                     formControlName="password" placeholder="Password">
                 </div>
-                <div style="color: red" [hidden]="signupForm.valid">{{ errors?.password[0] }}</div>
+                <div *ngIf='errors.password' style="color: red" [hidden]="signupForm.valid">{{ errors.password[0] }}</div>
               </div>
               <button type="submit" class="ui fluid large teal submit button" [disabled]="!signupForm.valid">Signup</button>
               <app-loader></app-loader>
