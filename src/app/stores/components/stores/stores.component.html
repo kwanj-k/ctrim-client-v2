@@ -44,8 +44,9 @@
                 <div class="ui loader"></div>
               </div>
           </div>
-          <div class="ui cards">
-              <div class="card" *ngFor="let store of stores">
+          <div class="ui cards col">
+              <a class="card" *ngFor="let store of stores"
+              routerLink="/stores/{{ store.name }}">
                 <div class="content">
                   <div class="header">{{ store.name }}</div>
                   <div class="meta">By: {{ store.owner }}</div>
@@ -53,7 +54,7 @@
                     {{ store.description }}
                   </div>
                 </div>
-              </div>
+              </a>
           </div>
     </div>
 </div>

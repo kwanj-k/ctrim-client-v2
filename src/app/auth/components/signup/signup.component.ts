@@ -11,8 +11,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent {
-  errors: { property: Array<string>; }
-  submitted: boolean = false;
+  errors: { property: Array<string>; };
+  submitted = false;
   signupForm = this.fb.group({
     email: new FormControl('',
       [
@@ -30,7 +30,7 @@ export class SignupComponent {
         Validators.required
       ]
     ),
-  })
+  });
 
   constructor(
     private fb: FormBuilder,
@@ -40,23 +40,23 @@ export class SignupComponent {
 
   onSubmit() {
     this.submitted = true;
-    const userData = <ISignupPayload> {
+    const userData = {
       email: this.signupForm.get('email').value,
       username: this.signupForm.get('username').value,
       password: this.signupForm.get('password').value
-    }
+    } as ISignupPayload;
     this.signupService.signupUser(userData)
       .subscribe(res => {
         if (res) {
-          this._router.navigate(['stores'])
+          this._router.navigate(['stores']);
         }
       },
       error => {
         this.errors = error.error;
         Object.keys(error.error).forEach(key => {
-          this.signupForm.get(key).setErrors({'incorrect': true});
-        })
-      })
+          this.signupForm.get(key).setErrors({incorrect: true});
+        });
+      });
   }
 
 }

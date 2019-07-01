@@ -16,7 +16,7 @@ export class StoresService {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + this.token
+      Authorization: 'Bearer ' + this.token
     })
   };
   constructor(
@@ -25,7 +25,7 @@ export class StoresService {
     private tokenService: TokenService
   ) { }
   getStores(): Observable<IStore[]> {
-    return this.http.get<IStore[]>(this.storesUrl, this.httpOptions)
+    return this.http.get<IStore[]>(this.storesUrl, this.httpOptions);
   }
   addStore(storeData: IAddStore): Observable<any> {
     return this.http.post<IStore[]>(
@@ -34,6 +34,6 @@ export class StoresService {
       map(data => {
         return data;
       })
-    )
+    );
   }
 }
