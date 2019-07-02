@@ -1,9 +1,16 @@
 <div class="dets">
-    <div class="ui container">
-        <button class="ui button">
-          Back
-        </button>
+    <button class="float circular ui icon teal button">
+        <i class="my-float file icon"></i>
+    </button>
+    <div class="label-container">
+        <div class="ui grey right pointing label big">Take Stock</div>
+      </div>
+    <div (click)='onBack()' class="ui container">
+        <button class="ui  blue button">
+            Back
+          </button>
         <app-line-chart ></app-line-chart>
         <app-percentage-cards></app-percentage-cards>
+        <app-products class="products"></app-products>
       </div>
 </div>
