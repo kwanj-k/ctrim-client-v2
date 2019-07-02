@@ -23,6 +23,7 @@ import { StoreDetailComponent } from './stores/components/store-detail/store-det
 import { LineChartComponent } from './animations/components/line-chart/line-chart.component';
 import { ChartsModule } from 'ng2-charts';
 import { PercentageCardsComponent } from './stores/components/percentage-cards/percentage-cards.component';
+import { ProductsComponent } from './stores/components/products/products.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { PercentageCardsComponent } from './stores/components/percentage-cards/p
     StoreDetailComponent,
     LineChartComponent,
     PercentageCardsComponent,
+    ProductsComponent,
   ],
   imports: [
     BrowserModule,

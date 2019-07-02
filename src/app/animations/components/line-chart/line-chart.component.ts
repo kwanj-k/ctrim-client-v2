@@ -20,7 +20,7 @@ export class LineChartComponent {
   };
 
   chartData = [
-    { data: [150000, 200000, 180000, 250000, 200000, 220000, 300000], 
+    { data: [150000, 200000, 180000, 250000, 200000, 220000, 300000],
       label: 'Sales'},
     { data: [60000, 90000, 60000, 30000, 40000, 50000, 45000],
       label: 'Profits' },
@@ -47,7 +47,7 @@ export class LineChartComponent {
     },
     // ...colors for additional data sets
   ];
-  
+
 
   chartLabels = ['January', 'February', 'Mar', 'April', 'May', 'June', 'July'];
 
