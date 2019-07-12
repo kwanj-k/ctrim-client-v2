@@ -1,1 +1,10 @@
-
+#trash {
+    margin-left: 2em !important;
+    color: red;
+}
+.actions {
+    display: flex;
+}
+th.name-item {
+    width: 15% !important;
+}

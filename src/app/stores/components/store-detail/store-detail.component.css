@@ -40,3 +40,7 @@ button.float:hover + .label-container{
   visibility: visible;
   opacity: 1;
 }
+
+i.sidebar {
+	margin-right: 3em !important;
+}
