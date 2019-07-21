@@ -1,0 +1,61 @@
+<table class="ui celled striped table">
+    <thead>
+      <tr>
+        <th colspan="9">
+          Products
+          <div style="float: right" class="ui category search">
+            <div class="ui icon input">
+              <input class="prompt" type="text" placeholder="Search products...">
+              <i class="search icon"></i>
+            </div>
+            <div class="results"></div>
+          </div>
+        </th>
+      </tr>
+    </thead>
+    <thead>
+      <tr>
+        <th class="name-item">Name</th>
+        <th>Packaging</th>
+        <th>Package Pieces</th>
+        <th>Number Of Packages</th>
+        <th>Package Price</th>
+        <th>Number Of Pieces</th>
+        <th>Piece Price</th>
+        <th>Product Worth</th>
+        <th> Actions </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td>{{ product.name}}</td>
+        <td>{{ product.packaging}}</td>
+        <td>{{ product.package_pices}}</td>
+        <td>{{ product.number_of_packages}}</td>
+        <td>{{ product.package_price}}</td>
+        <td>{{ product.number_of_pieces}}</td>
+        <td>{{ product.piece_price}}</td>
+        <td>{{ product.product_worth}}</td>
+        <td class="actions">
+          <a><i class="edit icon"></i></a>
+          <a><i class="trash alternate outline icon" id="trash"></i></a>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot class="full-width">
+      <tr>
+        <th></th>
+        <th colspan="9">
+          <div class="ui right floated small primary labeled icon button">
+            <i class="cart icon"></i> Add Product
+          </div>
+          <div class="ui small button" [class.disabled]="!nextPage">
+            Next
+          </div>
+          <div class="ui small button" [class.disabled]="!prevPage">
+            Prev
+          </div>
+        </th>
+      </tr>
+    </tfoot>
+</table>

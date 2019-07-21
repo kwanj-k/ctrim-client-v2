@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-store-detail',
@@ -8,12 +8,12 @@ import { Router } from '@angular/router';
 })
 export class StoreDetailComponent implements OnInit {
 
-  constructor(private _router: Router) { }
+  constructor(private location: Location) { }
 
   ngOnInit() {
   }
   onBack(): void {
-    this._router.navigate(['stores']);
+    this.location.back();
   }
 
 }
