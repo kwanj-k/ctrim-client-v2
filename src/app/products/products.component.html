@@ -49,10 +49,10 @@
           <div class="ui right floated small primary labeled icon button">
             <i class="cart icon"></i> Add Product
           </div>
-          <div class="ui small button" [class.disabled]="!nextPage">
+          <div (click)='onNext()' class="ui small button" [class.disabled]="!nextPage">
             Next
           </div>
-          <div class="ui small button" [class.disabled]="!prevPage">
+          <div (click)='onPrev()' class="ui small button" [class.disabled]="!prevPage">
             Prev
           </div>
         </th>
