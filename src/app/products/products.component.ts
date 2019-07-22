@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from './services/product.service';
 import { SettingsService } from 'src/app/shared/services/settings.service';
+import { IProduct } from './interfaces';
 
 @Component({
   selector: 'app-products',
@@ -11,13 +12,14 @@ import { SettingsService } from 'src/app/shared/services/settings.service';
 export class ProductsComponent implements OnInit {
   storeName = this.route.snapshot.paramMap.get('storename');
   productsUrl = this.settings.baseUrl + 'products/' + this.storeName;
-  products: any[];
+  products: IProduct[];
   nextPage = false;
   prevPage = false;
   productExist = false;
   isLoading = true;
   nextUrl: string;
   prevUrl: string;
+  productsExist = true;
   constructor(
     private route: ActivatedRoute,
     private productsService: ProductService,
@@ -52,12 +54,11 @@ export class ProductsComponent implements OnInit {
           this.prevPage = false;
         }
         if (products['results'].length > 1) {
-          this.productExist = true;
+          this.productsExist = false;
         }
         this.products = products['results'];
         this.isLoading = false;
       }
     );
   }
-
 }

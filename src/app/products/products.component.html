@@ -1,4 +1,5 @@
 <table class="ui celled striped table">
+  
     <thead>
       <tr>
         <th colspan="9">
@@ -11,7 +12,12 @@
             <div class="results"></div>
           </div>
         </th>
-      </tr>
+    </tr>
+    <tr *ngIf='productsExist'>
+      <th colspan="9">
+        You do not have any products at the moment.
+        Click the addProduct on the bottom right to add a product.</th>
+    </tr>
     </thead>
     <thead>
       <tr>
