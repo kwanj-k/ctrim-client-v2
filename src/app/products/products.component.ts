@@ -15,6 +15,7 @@ export class ProductsComponent implements OnInit {
   nextPage = false;
   prevPage = false;
   productExist = false;
+  isLoading = true;
   nextUrl: string;
   prevUrl: string;
   constructor(
@@ -41,15 +42,20 @@ export class ProductsComponent implements OnInit {
         if (products['next'] != null) {
           this.nextPage = true;
           this.nextUrl = products['next'];
+        } else {
+          this.nextPage = false;
         }
         if (products['previous'] != null) {
           this.prevPage = true;
           this.prevUrl = products['previous'];
+        } else {
+          this.prevPage = false;
         }
         if (products['results'].length > 1) {
           this.productExist = true;
         }
         this.products = products['results'];
+        this.isLoading = false;
       }
     );
   }

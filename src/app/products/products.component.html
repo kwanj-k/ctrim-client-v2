@@ -27,6 +27,7 @@
       </tr>
     </thead>
     <tbody>
+      <div *ngIf="isLoading" class="ui active inline loader"></div>
       <tr *ngFor="let product of products">
         <td>{{ product.name}}</td>
         <td>{{ product.packaging}}</td>
