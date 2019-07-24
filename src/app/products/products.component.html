@@ -65,9 +65,9 @@
       <tr>
         <th></th>
         <th colspan="9">
-          <div class="ui right floated small primary labeled icon button">
-            <i class="cart icon"></i> Add Product
-          </div>
+          <button (click)="addProdModal()" class="ui right floated small primary labeled icon button" >
+              <i  class="cart icon"></i> Add Product
+          </button>
           <div (click)='onNext()' class="ui small button" [class.disabled]="!nextPage">
             Next
           </div>
@@ -78,3 +78,48 @@
       </tr>
     </tfoot>
 </table>
+<div *ngIf='showAddProdModal' class='ui dimmer modals page transition visible active' >
+  <div class="ui medium modal visible active" id="modal">
+      <i class="close icon" (click)='addProdModal()'></i>
+      <form class="ui form">
+          <h4 class="ui dividing header">New Product Form</h4>
+          <div class="field">
+            <label>Product Name</label>
+              <div class="field">
+                <input type="text" name="productName" placeholder="Product Name">
+              </div>
+          </div>
+          <div class="field">
+            <label>Product Packaging</label>
+            <div class="fields">
+              <div class="eight wide field">
+                <input type="text" name="Packaging Name" placeholder="Packaging Name">
+              </div>
+              <div class="four wide field">
+                <input type="number" name="Available Packages" placeholder="Available Packages">
+              </div>
+              <div class="four wide field">
+                  <input type="number" name="Package Price" placeholder="Price Per Package">
+                </div>
+            </div>
+          </div>
+          <div class="field">
+              <label>Product Pieces Info</label>
+              <div class="fields">
+                <div class="eight wide field">
+                  <input type="number" name="Number Of Pieces" placeholder="Number Of Pieces">
+                </div>
+                <div class="eight wide field">
+                  <input type="number" name="Piece Price" placeholder="Price Per Piece">
+                </div>
+              </div>
+          </div>
+            <button (click)='addProdModal()' class="ui black deny button"  tabindex="0">
+              Cancel
+            </button>
+            <button (click)="onSubmit()" class="ui button"  tabindex="0">
+              Add Product
+            </button>
+        </form>
+    </div>
+</div>

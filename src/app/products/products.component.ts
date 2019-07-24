@@ -20,6 +20,7 @@ export class ProductsComponent implements OnInit {
   nextUrl: string;
   prevUrl: string;
   productsExist = true;
+  showAddProdModal = false;
   constructor(
     private route: ActivatedRoute,
     private productsService: ProductService,
@@ -66,5 +67,9 @@ export class ProductsComponent implements OnInit {
     this.products = this.products.filter(p => p !== product);
     const url =this.productsUrl + '/' + product.name
     this.productsService.delete(url).subscribe();
+  }
+
+  addProdModal(): void {
+    this.showAddProdModal = !this.showAddProdModal;
   }
 }
