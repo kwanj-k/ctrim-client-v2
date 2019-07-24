@@ -61,4 +61,10 @@ export class ProductsComponent implements OnInit {
       }
     );
   }
+
+  deleteProduct(product: IProduct): void{
+    this.products = this.products.filter(p => p !== product);
+    const url =this.productsUrl + '/' + product.name
+    this.productsService.delete(url).subscribe();
+  }
 }

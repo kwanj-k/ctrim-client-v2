@@ -26,4 +26,8 @@ export class ProductService {
       this.httpOptions
     );
   }
+  delete(url: string): Observable<{}> {
+    return this.http.delete<IProduct>(url, this.httpOptions)
+  }
+
 }

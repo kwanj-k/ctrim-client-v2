@@ -44,26 +44,20 @@
         <td>{{ product.product_worth}}</td>
         <td class="actions">
           <a><i class="edit icon"></i></a>
-          <div style="text-align:center">
-              <a><i (click)="show = true" class="trash alternate outline icon" id="trash"></i></a>
-                <sui-modal *ngIf="show" [isClosable]="true" (dismissed)="show = false" #modal>
-                    <div class="ui icon header">
-                        <i class="trash alternate outline icon"></i>
-                        Delete Product
-                      </div>
-                      <div class="content">
-                        <h5>You are about to delete this product permanently. Are you sure you want to continue?</h5>
-                      </div>
-                      <div class="actions">
-                          <button class="ui button" (click)="modal.deny()">Cancel</button>
-                          <button class="ui red button" (click)="modal.deny()">Delete</button>
-                      </div>
-                  <!-- <div class="actions">
-                      <button class="ui red right button" (click)="modal.deny()">Cancel</button>
-                      <button class="ui green right button" (click)="modal.approve('done')" autofocus>OK</button>
-                  </div> -->
-                </sui-modal>
-          </div>
+          <a><i (click)="show = true" class="trash alternate outline icon" id="trash"></i></a>
+          <sui-modal *ngIf="show" [isClosable]="true" (dismissed)="show = false" #modal>
+              <div class="ui icon header">
+                  <i class="trash alternate outline icon"></i>
+                  Delete Product
+                </div>
+                <div class="content">
+                  <h5>You are about to delete this product permanently. Are you sure you want to continue?</h5>
+                </div>
+                <div class="actions">
+                    <button class="ui button" (click)="show = false">Cancel</button>
+                    <button class="ui red button" (click)="deleteProduct(product); modal.deny()">Delete</button>
+                </div>
+          </sui-modal>
         </td>
       </tr>
     </tbody>
