@@ -1,5 +1,4 @@
 <table class="ui celled striped table">
-  
     <thead>
       <tr>
         <th colspan="9">
@@ -45,7 +44,20 @@
         <td>{{ product.product_worth}}</td>
         <td class="actions">
           <a><i class="edit icon"></i></a>
-          <a><i class="trash alternate outline icon" id="trash"></i></a>
+          <a><i (click)="show = true" class="trash alternate outline icon" id="trash"></i></a>
+          <sui-modal *ngIf="show" [isClosable]="true" (dismissed)="show = false" #modal>
+              <div class="ui icon header">
+                  <i class="trash alternate outline icon"></i>
+                  Delete Product
+                </div>
+                <div class="content">
+                  <h5>You are about to delete this product permanently. Are you sure you want to continue?</h5>
+                </div>
+                <div class="actions">
+                    <button class="ui button" (click)="show = false">Cancel</button>
+                    <button class="ui red button" (click)="deleteProduct(product); modal.deny()">Delete</button>
+                </div>
+          </sui-modal>
         </td>
       </tr>
     </tbody>
