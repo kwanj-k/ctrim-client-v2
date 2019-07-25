@@ -84,22 +84,27 @@
       <form class="ui form">
           <h4 class="ui dividing header">New Product Form</h4>
           <div class="field">
-            <label>Product Name</label>
-              <div class="field">
-                <input type="text" name="productName" placeholder="Product Name">
+            <label>Product Info</label>
+              <div class="fields">
+                <div class="twelve wide field">
+                  <input type="text" name="productName" placeholder="Product Name">
+                </div>
+                <div class="four wide field">
+                    <input type="text" name="packagingName" placeholder="Packaging Name">
+                  </div>
               </div>
           </div>
           <div class="field">
             <label>Product Packaging</label>
             <div class="fields">
               <div class="eight wide field">
-                <input type="text" name="Packaging Name" placeholder="Packaging Name">
+                <input type="text" name="piecesInPackage" placeholder="Pieces In Package">
               </div>
               <div class="four wide field">
-                <input type="number" name="Available Packages" placeholder="Available Packages">
+                <input type="number" name="availablePackages" placeholder="Available Packages">
               </div>
               <div class="four wide field">
-                  <input type="number" name="Package Price" placeholder="Price Per Package">
+                  <input type="number" name="packagePrice" placeholder="Price Per Package">
                 </div>
             </div>
           </div>
@@ -107,17 +112,17 @@
               <label>Product Pieces Info</label>
               <div class="fields">
                 <div class="eight wide field">
-                  <input type="number" name="Number Of Pieces" placeholder="Number Of Pieces">
+                  <input type="number" name="numberOfPieces" placeholder="Number Of Pieces">
                 </div>
                 <div class="eight wide field">
-                  <input type="number" name="Piece Price" placeholder="Price Per Piece">
+                  <input type="number" name="piecePrice" placeholder="Price Per Piece">
                 </div>
               </div>
           </div>
             <button (click)='addProdModal()' class="ui black deny button"  tabindex="0">
               Cancel
             </button>
-            <button (click)="onSubmit()" class="ui button"  tabindex="0">
+            <button (click)="addProduct()" class="ui button"  tabindex="0">
               Add Product
             </button>
         </form>
