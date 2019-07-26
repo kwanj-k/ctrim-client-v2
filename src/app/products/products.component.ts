@@ -23,6 +23,7 @@ export class ProductsComponent implements OnInit {
   productsExist = true;
   showAddProdModal = false;
   proFormSubmitted = false;
+  error: string;
   addProductForm = this.fb.group({
     productName: new FormControl('',
       [
@@ -123,7 +124,19 @@ export class ProductsComponent implements OnInit {
         package_price: this.addProductForm.get('packagePrice').value,
         piece_price: this.addProductForm.get('piecePrice').value,
         number_of_pieces: this.addProductForm.get('numberOfPieces').value,
+    } as IProduct
+    this.productsService.addProduct(this.productsUrl + '/', productData)
+      .subscribe(
+        res => {
+          this.addProdModal();
+          this.products.push(res)
+        },
+        error => {
+          this.error = error.error;
+          this.invalidate();
+        });
     }
-    console.log(productData)
-  }
+    private invalidate() {
+      this.addProductForm.get('productName').setErrors({ incorrect: true });
+    }
 } 

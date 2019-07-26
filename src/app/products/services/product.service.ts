@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
 import { TokenService } from 'src/app/shared/services/token.service';
 import { IProduct } from 'src/app/products/interfaces';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,14 @@ export class ProductService {
   delete(url: string): Observable<{}> {
     return this.http.delete<IProduct>(url, this.httpOptions)
   }
-  
+  addProduct(url: string, productData: IProduct): Observable<any>{
+    return this.http.post<IProduct>(
+      url, productData, this.httpOptions
+    ).pipe(
+      map(
+        data => {return data;}
+      )
+    )
+  }
 
 }

@@ -80,51 +80,51 @@
 </table>
 <div *ngIf='showAddProdModal' class='ui dimmer modals page transition visible active' >
   <div class="ui medium modal visible active" id="modal">
-      <i class="close icon" (click)='addProdModal()'></i>
-      <form class="ui form">
-          <h4 class="ui dividing header">New Product Form</h4>
-          <div class="field">
-            <label>Product Info</label>
-              <div class="fields">
-                <div class="twelve wide field">
-                  <input type="text" name="productName" placeholder="Product Name">
-                </div>
-                <div class="four wide field">
-                    <input type="text" name="packagingName" placeholder="Packaging Name">
-                  </div>
-              </div>
-          </div>
-          <div class="field">
-            <label>Product Packaging</label>
-            <div class="fields">
-              <div class="eight wide field">
-                <input type="text" name="piecesInPackage" placeholder="Pieces In Package">
-              </div>
-              <div class="four wide field">
-                <input type="number" name="availablePackages" placeholder="Available Packages">
-              </div>
-              <div class="four wide field">
-                  <input type="number" name="packagePrice" placeholder="Price Per Package">
-                </div>
-            </div>
-          </div>
-          <div class="field">
-              <label>Product Pieces Info</label>
-              <div class="fields">
-                <div class="eight wide field">
-                  <input type="number" name="numberOfPieces" placeholder="Number Of Pieces">
-                </div>
-                <div class="eight wide field">
-                  <input type="number" name="piecePrice" placeholder="Price Per Piece">
-                </div>
-              </div>
-          </div>
-            <button (click)='addProdModal()' class="ui black deny button"  tabindex="0">
-              Cancel
-            </button>
-            <button (click)="addProduct()" class="ui button"  tabindex="0">
-              Add Product
-            </button>
-        </form>
-    </div>
+    <i class="close icon" (click)='addProdModal()'></i>
+    <form class="ui form" [formGroup]="addProductForm">
+      <h4 class="ui dividing header">New Product Form</h4>
+      <div class="fields">
+        <div class="twelve wide field">
+          <label>Product Name</label>
+          <input type="text" formControlName="productName" placeholder="Product Name"
+          [class.field-error]="!addProductForm.valid && submitted">
+          <div style="color: red" [hidden]="addProductForm.untouched">{{ error }}</div>
+        </div>
+        <div class="four wide field">
+          <label>Packaging Name(e.g Bale/ctn)</label>
+          <input type="text" formControlName="packagingName" placeholder="Packaging Name">
+        </div>
+      </div>
+      <div class="fields">
+        <div class="eight wide field">
+          <label>Pieces In Package</label>
+          <input type="number" formControlName="piecesInPackage" placeholder="Pieces In Package">
+        </div>
+        <div class="four wide field">
+          <label>Available Packages</label>
+          <input type="number" formControlName="availablePackages" placeholder="Available Packages">
+        </div>
+        <div class="four wide field">
+          <label>Price Per Package</label>
+          <input type="number" formControlName="packagePrice" placeholder="Price Per Package">
+        </div>
+      </div>
+      <div class="fields">
+        <div class="eight wide field">
+          <label>Available Pieces</label>
+          <input type="number" formControlName="numberOfPieces" placeholder="Number Of Pieces">
+        </div>
+        <div class="eight wide field">
+            <label>Price Per Piece</label>
+            <input type="number" formControlName="piecePrice" placeholder="Price Per Piece">
+        </div>
+      </div>
+      <button (click)='addProdModal()' class="ui black deny button"  tabindex="0">
+        Cancel
+      </button>
+      <button (click)="addProduct()" class="ui button"  tabindex="0" [disabled]="!addProductForm.valid">
+        Add Product
+      </button>
+    </form>
+  </div>
 </div>
