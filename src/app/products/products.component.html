@@ -45,7 +45,7 @@
         <td class="actions">
           <a><i class="edit icon"></i></a>
           <a><i (click)="show = true" class="trash alternate outline icon" id="trash"></i></a>
-          <sui-modal *ngIf="show" [isClosable]="true" (dismissed)="show = false" #modal>
+          <sui-modal *ngIf="show" [isClosable]="true"  #modal>
               <div class="ui icon header">
                   <i class="trash alternate outline icon"></i>
                   Delete Product
@@ -55,7 +55,7 @@
                 </div>
                 <div class="actions">
                     <button class="ui button" (click)="show = false">Cancel</button>
-                    <button class="ui red button" (click)="deleteProduct(product); modal.deny()">Delete</button>
+                    <button class="ui red button" (click)="modal.deny(); deleteProduct(product)">Delete</button>
                 </div>
           </sui-modal>
         </td>
