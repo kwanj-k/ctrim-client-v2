@@ -1,3 +1,9 @@
+form {
+    padding: 6% !important;
+}
+#modal {
+    margin-top: -25% !important;
+}
 #trash {
     margin-left: 2em !important;
     color: red;
@@ -7,4 +13,8 @@
 }
 th.name-item {
     width: 15% !important;
+}
+.field .field-error {
+	border: 1px solid red !important;
+	margin-top: 4px;
 }
