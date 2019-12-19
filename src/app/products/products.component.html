@@ -43,9 +43,74 @@
         <td>{{ product.piece_price}}</td>
         <td>{{ product.product_worth}}</td>
         <td class="actions">
-          <a><i class="edit icon"></i></a>
-          <a><i (click)="show = true" class="trash alternate outline icon" id="trash"></i></a>
-          <sui-modal *ngIf="show" [isClosable]="true"  #modal>
+          <a><i class="edit icon" (click)="editProdModal()"></i></a>
+          <div *ngIf='showEditProdModal' class='ui dimmer modals page transition visible active' >
+              <div class="ui medium modal visible active" id="modal">
+                <i class="close icon" (click)='editProdModal()'></i>
+                <form class="ui form" [formGroup]="addProductForm">
+                  <h4 class="ui dividing header">Edit Product Form</h4>
+                  <div class="fields">
+                    <div class="twelve wide field">
+                      <label>Product Name</label>
+                      <input type="text" formControlName="productName" value="{{ product.name}}"
+                      [class.field-error]="!addProductForm.valid && submitted">
+                      <div style="color: red" [hidden]="addProductForm.untouched">{{ error }}</div>
+                    </div>
+                    <div class="four wide field">
+                      <label>Packaging Name(e.g Bale/ctn)</label>
+                      <input type="text" formControlName="packagingName" value="{{ product.packaging }}">
+                    </div>
+                  </div>
+                  <div class="fields">
+                    <div class="eight wide field">
+                      <label>Pieces In Package</label>
+                      <input type="number" min="1" formControlName="piecesInPackage" value="{{ product.package_pices}}">
+                    </div>
+                    <div class="four wide field">
+                      <label>Available Packages</label>
+                      <input type="number" min="1" formControlName="availablePackages" value="{{ product.number_of_packages}}">
+                    </div>
+                    <div class="four wide field">
+                      <label>Price Per Package</label>
+                      <input type="number" min="1" formControlName="packagePrice"  value="{{ product.package_price}}">
+                    </div>
+                  </div>
+                  <div class="fields">
+                    <div class="eight wide field">
+                      <label>Available Pieces</label>
+                      <input type="number" min="1" formControlName="numberOfPieces" value="{{ product.number_of_pieces}}">
+                    </div>
+                    <div class="eight wide field">
+                        <label>Price Per Piece</label>
+                        <input type="number" min="1" formControlName="piecePrice" value="{{ product.piece_price }}">
+                    </div>
+                  </div>
+                  <button (click)='editProdModal()' class="ui black deny button"  tabindex="0">
+                    Cancel
+                  </button>
+                  <button (click)="editProduct(product)" class="ui button"  tabindex="0" >
+                    Add Product
+                  </button>
+                </form>
+              </div>
+          </div>
+          <a><i (click)="delProdModal()" class="trash alternate outline icon" id="trash"></i></a>
+          <div class="ui dimmer modal" *ngIf='showDelProdModal'>
+            <i class="close icon"></i>
+            <div class="header">
+              Profile Picture
+            </div>
+            <div class="actions">
+              <div class="ui black deny button">
+                Nope
+              </div>
+              <div class="ui positive right labeled icon button">
+                Yep, that's me
+                <i class="checkmark icon"></i>
+              </div>
+            </div>
+          </div>
+          <!-- <div *ngIf='showDelProdModal' class='ui dimmer modals page transition visible active'>
               <div class="ui icon header">
                   <i class="trash alternate outline icon"></i>
                   Delete Product
@@ -54,10 +119,10 @@
                   <h5>You are about to delete this product permanently. Are you sure you want to continue?</h5>
                 </div>
                 <div class="actions">
-                    <button class="ui button" (click)="show = false">Cancel</button>
-                    <button class="ui red button" (click)="modal.deny(); deleteProduct(product)">Delete</button>
+                    <button class="ui button" (click)="delProdModal()">Cancel</button>
+                    <button class="ui red button" (click)="deleteProduct(product)">Delete</button>
                 </div>
-          </sui-modal>
+              </div> -->
         </td>
       </tr>
     </tbody>
@@ -98,25 +163,25 @@
       <div class="fields">
         <div class="eight wide field">
           <label>Pieces In Package</label>
-          <input type="number" formControlName="piecesInPackage" placeholder="Pieces In Package">
+          <input type="number" min="1" formControlName="piecesInPackage" placeholder="Pieces In Package">
         </div>
         <div class="four wide field">
           <label>Available Packages</label>
-          <input type="number" formControlName="availablePackages" placeholder="Available Packages">
+          <input type="number" min="1" formControlName="availablePackages" placeholder="Available Packages">
         </div>
         <div class="four wide field">
           <label>Price Per Package</label>
-          <input type="number" formControlName="packagePrice" placeholder="Price Per Package">
+          <input type="number" min="1" formControlName="packagePrice" placeholder="Price Per Package">
         </div>
       </div>
       <div class="fields">
         <div class="eight wide field">
           <label>Available Pieces</label>
-          <input type="number" formControlName="numberOfPieces" placeholder="Number Of Pieces">
+          <input type="number" min="1" formControlName="numberOfPieces" placeholder="Number Of Pieces">
         </div>
         <div class="eight wide field">
             <label>Price Per Piece</label>
-            <input type="number" formControlName="piecePrice" placeholder="Price Per Piece">
+            <input type="number" min="1" formControlName="piecePrice" placeholder="Price Per Piece">
         </div>
       </div>
       <button (click)='addProdModal()' class="ui black deny button"  tabindex="0">

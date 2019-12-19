@@ -24,6 +24,7 @@ export class ProductsComponent implements OnInit {
   showAddProdModal = false;
   proFormSubmitted = false;
   error: string;
+  showDelProdModal = false;
   addProductForm = this.fb.group({
     productName: new FormControl('',
       [
@@ -104,6 +105,10 @@ export class ProductsComponent implements OnInit {
     );
   }
 
+  delProdModal(): void {
+    this.showDelProdModal = !this.showDelProdModal;
+  }
+
   deleteProduct(product: IProduct): void{
     this.products = this.products.filter(p => p !== product);
     const url =this.productsUrl + '/' + product.name
@@ -114,16 +119,26 @@ export class ProductsComponent implements OnInit {
     this.showAddProdModal = !this.showAddProdModal;
   }
 
+  productData = {
+    name: this.addProductForm.get('productName').value,
+    packaging: this.addProductForm.get('packagingName').value,
+    package_pices: this.addProductForm.get('piecesInPackage').value,
+    number_of_packages: this.addProductForm.get('availablePackages').value,
+    package_price: this.addProductForm.get('packagePrice').value,
+    piece_price: this.addProductForm.get('piecePrice').value,
+    number_of_pieces: this.addProductForm.get('numberOfPieces').value,
+  } as IProduct
+
   addProduct(): void {
     this.proFormSubmitted = true;
     const productData = {
-        name: this.addProductForm.get('productName').value,
-        packaging: this.addProductForm.get('packagingName').value,
-        package_pices: this.addProductForm.get('piecesInPackage').value,
-        number_of_packages: this.addProductForm.get('availablePackages').value,
-        package_price: this.addProductForm.get('packagePrice').value,
-        piece_price: this.addProductForm.get('piecePrice').value,
-        number_of_pieces: this.addProductForm.get('numberOfPieces').value,
+      name: this.addProductForm.get('productName').value,
+      packaging: this.addProductForm.get('packagingName').value,
+      package_pices: this.addProductForm.get('piecesInPackage').value,
+      number_of_packages: this.addProductForm.get('availablePackages').value,
+      package_price: this.addProductForm.get('packagePrice').value,
+      piece_price: this.addProductForm.get('piecePrice').value,
+      number_of_pieces: this.addProductForm.get('numberOfPieces').value,
     } as IProduct
     this.productsService.addProduct(this.productsUrl + '/', productData)
       .subscribe(
@@ -136,7 +151,17 @@ export class ProductsComponent implements OnInit {
           this.invalidate();
         });
     }
-    private invalidate() {
-      this.addProductForm.get('productName').setErrors({ incorrect: true });
-    }
+  private invalidate() {
+    this.addProductForm.get('productName').setErrors({ incorrect: true });
+  }
+  showEditProdModal = false;
+  editProdModal(): void {
+    this.showEditProdModal = !this.showEditProdModal;
+  }
+  editProduct(product: IProduct): void{
+    this.products = this.products.filter(p => p !== product);
+    const url =this.productsUrl + '/' + product.name
+    //this.productsService.delete(url).subscribe();
+  }
+
 } 
