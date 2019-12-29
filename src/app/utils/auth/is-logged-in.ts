@@ -7,7 +7,6 @@ import * as jwt_decode from 'jwt-decode';
 export class IsLoggedIn {
     private token: string = localStorage.getItem('ctrim-token');
     isExpired(): boolean {
-        console.log(this.token)
         if (this.token){
             const { exp } = jwt_decode(this.token);
             const now = new Date();
