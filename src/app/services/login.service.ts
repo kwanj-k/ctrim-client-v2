@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ILoginPayload, ILoginResponse } from '../interfaces/login';
-import { Observable, of } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
-import { ToastrService } from 'ngx-toastr';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
 import { SettingsService } from './settings.service';
+import { ILoginPayload, ILoginResponse } from '../interfaces/login';
 
 
 @Injectable({
@@ -15,7 +15,6 @@ export class LoginService {
   constructor(
     private http: HttpClient,
     private settings: SettingsService,
-    private toastr: ToastrService
     ) {}
 
   loginUser(userData: ILoginPayload): Observable<{}> {

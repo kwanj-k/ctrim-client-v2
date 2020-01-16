@@ -8,10 +8,10 @@ import { LoginService } from '../../services/login.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: 'login.component.html',
+  styleUrls: ['./login.scss'],
 })
 export class LoginComponent {
   submitted = false;
-  errors: { email: [] };
   loginForm = this.fb.group({
     email: new FormControl('',
       [
@@ -44,10 +44,10 @@ export class LoginComponent {
       }
     },
     error => {
-      this.errors = error.error;
-        Object.keys(error.error).forEach(key => {
-          this.loginForm.get(key).setErrors({incorrect: true});
-        });
+      // this.errors = error.error;
+      //   Object.keys(error.error).forEach(key => {
+      //     this.loginForm.get(key).setErrors({incorrect: true});
+      //   });
     });
   }
 

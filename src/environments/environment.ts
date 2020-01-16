@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  goauthUrl: 'https://sheltered-chamber-34871.herokuapp.com/'
+  goauthUrl: 'https://ctrim-api.herokuapp.com/api/'
 };
