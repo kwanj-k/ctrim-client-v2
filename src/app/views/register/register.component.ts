@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { ISignupPayload } from '../../interfaces/signup';
 import { SignupService } from '../../services/signup.service';
@@ -12,12 +12,10 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent {
   submitted = false;
-  errors: {
-    username: [],
-    email: [],
-    password: [],
-    confirmPassword: [],
-  };
+  errors: {};
+  passwordMatchValidator(frm: FormGroup) {
+    return frm.controls['password'].value === frm.controls['confirmPassword'].value ? null : {'mismatch': true};
+  }
   signupForm = this.fb.group({
     username: new FormControl('',
       [
@@ -40,7 +38,7 @@ export class RegisterComponent {
         Validators.required
       ]
     ),
-  });
+  }, {validator: this.passwordMatchValidator});
 
   constructor(
     private fb: FormBuilder,
@@ -53,7 +51,9 @@ export class RegisterComponent {
     const userData = {
       email: this.signupForm.get('email').value,
       username: this.signupForm.get('username').value,
-      password: this.signupForm.get('password').value     
+      password: this.signupForm.get('password').value,
+      confirm_password: this.signupForm.get('confirmPassword').value
+
     } as ISignupPayload;
     this.signupService.signupUser(userData)
       .subscribe(res => {
