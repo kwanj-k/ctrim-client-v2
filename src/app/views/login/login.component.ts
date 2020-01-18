@@ -41,7 +41,7 @@ export class LoginComponent {
     this.loginService.loginUser(userData)
     .subscribe(res => {
       if (res) {
-        this._router.navigate(['dashboard']);
+        this._router.navigate(['/dashboard']);
       }
     },
     error => {
@@ -49,7 +49,6 @@ export class LoginComponent {
         Object.keys(error.error).forEach(key => {
           this.loginForm.get('email').setErrors({incorrect: true});
         });
-        console.log(this.errors)
     });
   }
 
