@@ -12,6 +12,7 @@ import { LoginService } from '../../services/login.service';
 })
 export class LoginComponent {
   submitted = false;
+  errors: {};
   loginForm = this.fb.group({
     email: new FormControl('',
       [
@@ -44,10 +45,11 @@ export class LoginComponent {
       }
     },
     error => {
-      // this.errors = error.error;
-      //   Object.keys(error.error).forEach(key => {
-      //     this.loginForm.get(key).setErrors({incorrect: true});
-      //   });
+        this.errors = error.error;
+        Object.keys(error.error).forEach(key => {
+          this.loginForm.get('email').setErrors({incorrect: true});
+        });
+        console.log(this.errors)
     });
   }
 
