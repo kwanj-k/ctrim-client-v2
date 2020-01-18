@@ -14,8 +14,8 @@ export const navItems: INavData[] = [
     name: 'Actions',
     icon: 'icon-settings',
     children: [
-      { name: 'stores', url: '/stores', icon: 'icon-grid' }, 
-      { name: 'Take stock', url: '/takestock', icon: 'icon-plus' }
-  ]
+      { name: 'Take stock', url: '/takestock', icon: 'icon-plus' },
+      { name: 'history', url: '/history', icon: 'icon-clock' }
+    ]
   }
 ];
