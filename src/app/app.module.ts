@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { ToastrModule } from 'ngx-toastr';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -62,6 +63,7 @@ import { ChartsModule } from 'ng2-charts';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    ModalModule.forRoot()
   ],
   declarations: [
     AppComponent,
