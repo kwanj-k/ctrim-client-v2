@@ -19,7 +19,7 @@ export class LoginService {
 
   loginUser(userData: ILoginPayload): Observable<{}> {
     return this.http.post<ILoginResponse>(
-        this.loginUrl, userData, this.settings.httpOptions).pipe(
+        this.loginUrl, userData, this.settings.authHttpOptions).pipe(
             map(data => {
                 localStorage.setItem('ctrim-token', data.token);
                 return data;

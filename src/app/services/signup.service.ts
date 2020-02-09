@@ -20,7 +20,7 @@ export class SignupService {
 
   signupUser(userData: ISignupPayload): Observable<{}> {
     return this.http.post<ISignupResponse>(
-      this.signupUrl, userData, this.settings.httpOptions
+      this.signupUrl, userData, this.settings.authHttpOptions
     ).pipe(
       map(data => {
         localStorage.setItem('ctrim-token', data.token);
