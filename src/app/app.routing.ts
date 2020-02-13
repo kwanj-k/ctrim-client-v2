@@ -8,6 +8,7 @@ import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
 import { AuthGuard } from './utils';
 
+
 export const routes: Routes = [
   {
     path: '',
@@ -56,11 +57,15 @@ export const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       {
-        path: 'dashboard',
+        path: '',
         loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule)
-      }
+      },
+      {
+        path: '',
+        loadChildren: () => import('./views/stocks/stocks.module').then(m => m.StocksModule)
+      },
     ]
-  }
+  },
 ];
 
 @NgModule({
