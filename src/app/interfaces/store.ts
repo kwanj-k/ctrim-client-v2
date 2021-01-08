@@ -7,3 +7,8 @@ export interface IStore {
     owner: string;
     pk: number;
   }
+
+export interface IAddStock {
+    name: string;
+    description: string;
+  }

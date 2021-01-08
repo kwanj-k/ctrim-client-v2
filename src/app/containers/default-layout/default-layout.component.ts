@@ -5,7 +5,8 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms'
 
 import { navItems } from '../../_nav';
 import { LogoutService } from '../../services/logout.service';
-import { IAddStore } from '../../interfaces/store';
+import { StockService } from '../../services/addStock.service'
+import { IAddStock } from '../../interfaces/store';
 
 
 
@@ -17,11 +18,13 @@ import { IAddStore } from '../../interfaces/store';
 export class DefaultLayoutComponent {
   public sidebarMinimized = false;
   public navItems = navItems;
+  public current_year = new Date().getFullYear();
+
   @ViewChild('primaryModal') public primaryModal: ModalDirective;
 
   submitted = false;
   error: string;
-  addStoreForm = this.fb.group({
+  addStockForm = this.fb.group({
     name: new FormControl('',
       [
         Validators.required
@@ -37,7 +40,8 @@ export class DefaultLayoutComponent {
   constructor(
     private logoutService: LogoutService,
     private router: Router,
-    private fb: FormBuilder  
+    private fb: FormBuilder,
+    private StockService: StockService,
     ) { }
   
     logOut() {
@@ -51,22 +55,22 @@ export class DefaultLayoutComponent {
   }
   onSubmit() {
     this.submitted = true;
-    const storeData = {
-      name: this.addStoreForm.get('name').value,
-      description: this.addStoreForm.get('description').value
-    } as IAddStore;
-    // this.storesService.addStore(storeData)
-    //   .subscribe(res => {
-    //     if (res) {
-    //       // toast store added
-    //     }
-    //   },
-    //   error => {
-    //     this.error = error.error;
-    //     this.invalidate();
-    //   });
+    const stockData = {
+      name: this.addStockForm.get('name').value,
+      description: this.addStockForm.get('description').value
+    } as IAddStock;
+    this.StockService.addStock(stockData, 1)
+      .subscribe(res => {
+        if (res) {
+          // toast stock added
+        }
+      },
+      error => {
+        this.error = error.error;
+        this.invalidate();
+      });
   }
   private invalidate() {
-    this.addStoreForm.get('name').setErrors({ incorrect: true });
+    this.addStockForm.get('name').setErrors({ incorrect: true });
   }
 }

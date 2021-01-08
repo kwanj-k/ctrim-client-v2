@@ -1,9 +1,10 @@
 import { INavData } from '@coreui/angular';
 
+
 export const navItems: INavData[] = [
   {
     name: 'Ctrim',
-    url: '/dashboard',
+    url: '',
     icon: 'icon-speedometer',
     badge: {
       variant: 'info',
@@ -11,10 +12,10 @@ export const navItems: INavData[] = [
     }
   },
   {
-    name: 'Actions',
-    icon: 'icon-settings',
+    name: 'Inventory',
+    icon: 'icon-layers',
     children: [
-      { name: 'Stocks', url: '/stocks', icon: 'icon-layers' }
+      { name: 'Stocks', url: '/stocks', icon: 'icon-file' }
     ]
   },
 ];

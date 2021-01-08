@@ -49,7 +49,7 @@ export const routes: Routes = [
     }
   },
   {
-    path: '',
+    path: 'dashboard',
     component: DefaultLayoutComponent,
     data: {
       title: 'Home'
