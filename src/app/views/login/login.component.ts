@@ -5,6 +5,7 @@ import { ILoginPayload } from '../../interfaces/login';
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
 
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: 'login.component.html',
@@ -39,17 +40,16 @@ export class LoginComponent {
       password: this.loginForm.get('password').value
     } as ILoginPayload;
     this.loginService.loginUser(userData)
-    .subscribe(res => {
-      if (res) {
-        this._router.navigate(['/dashboard']);
-      }
-    },
-    error => {
-        this.errors = error.error;
-        Object.keys(error.error).forEach(key => {
-          this.loginForm.get('email').setErrors({incorrect: true});
+      .subscribe(res => {
+        if (res) {
+          this._router.navigate(['/']);
+        }
+      },
+        error => {
+          this.errors = error.error;
+          Object.keys(error.error).forEach(key => {
+            this.loginForm.get('email').setErrors({ incorrect: true });
+          });
         });
-    });
   }
-
 }
