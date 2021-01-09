@@ -25,12 +25,12 @@ export class DefaultLayoutComponent {
   submitted = false;
   error: string;
   addStockForm = this.fb.group({
-    name: new FormControl('',
+    store: new FormControl('',
       [
         Validators.required
       ]
     ),
-    description: new FormControl('',
+    type: new FormControl('',
       [
         Validators.required
       ]
@@ -53,23 +53,23 @@ export class DefaultLayoutComponent {
   toggleMinimize(e) {
     this.sidebarMinimized = e;
   }
-  onSubmit() {
-    this.submitted = true;
-    const stockData = {
-      name: this.addStockForm.get('name').value,
-      description: this.addStockForm.get('description').value
-    } as IAddStock;
-    this.StockService.addStock(stockData, 1)
-      .subscribe(res => {
-        if (res) {
-          // toast stock added
-        }
-      },
-      error => {
-        this.error = error.error;
-        this.invalidate();
-      });
-  }
+  // onSubmit() {
+  //   this.submitted = true;
+  //   const stockData = {
+  //     store: this.addStockForm.get('store').value,
+  //     type: this.addStockForm.get('type').value
+  //   } as IAddStock;
+  //   this.StockService.addStock(stockData, 1)
+  //     .subscribe(res => {
+  //       if (res) {
+  //         // toast stock added
+  //       }
+  //     },
+  //     error => {
+  //       this.error = error.error;
+  //       this.invalidate();
+  //     });
+  // }
   private invalidate() {
     this.addStockForm.get('name').setErrors({ incorrect: true });
   }

@@ -49,11 +49,11 @@ export const routes: Routes = [
     }
   },
   {
-    path: 'dashboard',
+    path: '',
     component: DefaultLayoutComponent,
-    data: {
-      title: 'Home'
-    },
+    // data: {
+    //   title: 'Home'
+    // },
     canActivate: [AuthGuard],
     children: [
       {

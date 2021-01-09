@@ -7,3 +7,4 @@ export const environment = {
   production: false,
   goauthUrl: 'https://ctrim-api.herokuapp.com/api/'
 };
+
